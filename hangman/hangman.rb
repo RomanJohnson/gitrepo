@@ -1,6 +1,5 @@
 require "pry"
-gem 'random-word', '~> 1.3'
-
+require 'random-word'
 class Hangman
 
   def initialize
@@ -38,6 +37,7 @@ class Hangman
       end
         if flag == 0
         @count += 1
+        puts "You got #{@count} wrong so far."
         end
       progress_check
     end
@@ -46,9 +46,10 @@ class Hangman
 
       if @count >= 5
         puts "You Lose!"
+        puts @word
         @loss_count += 1
+        puts "Wins: #{@win_count} Losses: #{@loss_count}"
         create_word
-        display
       elsif @progress.join == @word
         puts "You Win!"
         @win_count += 1
